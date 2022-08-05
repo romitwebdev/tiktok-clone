@@ -121,6 +121,8 @@ const AllVideos = ({
                     ref={vidRef}
                     src={src}
                     onClick={onVideoClick}
+                    webkit-playsinline
+                    playsInline
                 ></video>
 
                 <div className="description-holder">
