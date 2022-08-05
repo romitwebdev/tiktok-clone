@@ -173,19 +173,18 @@ const AllVideos = ({
                                 <div className="follow-icon"></div>
                             </div>
                         </div>
-                        <div
-                            className="icon-container"
-                            onClick={() => setLiked(!liked)}
-                        >
-                            <IconContext.Provider
-                                value={{
-                                    className: liked
-                                        ? "icons like-active"
-                                        : "icons",
-                                }}
-                            >
-                                <BsHeartFill />
-                            </IconContext.Provider>
+                        <div className="icon-container">
+                            <span onClick={() => setLiked(!liked)}>
+                                <IconContext.Provider
+                                    value={{
+                                        className: liked
+                                            ? "icons like-active"
+                                            : "icons",
+                                    }}
+                                >
+                                    <BsHeartFill />
+                                </IconContext.Provider>
+                            </span>
                             <span>{likes}M</span>
                         </div>
                         <div className="icon-container">
