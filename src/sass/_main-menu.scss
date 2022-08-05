@@ -1,0 +1,45 @@
+// style for menu container at bottom
+.main-menu-container {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    @include flex-items(space-around, center);
+    color: $light-color;
+    padding: $base-padding * 0.7 0;
+    height: 10vh;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+    // style for each icons inside menu container
+    .main-icon {
+        @include flex-items;
+        flex-direction: column;
+
+        .icon {
+            font-size: $font-lg * 1.2;
+        }
+        p {
+            font-size: $font-sm * 1.5;
+        }
+    }
+
+    // style for add button holder in main menu container
+    .add-btn-holder {
+        width: 50px;
+        height: 35px;
+        background: linear-gradient(
+            to right,
+            $blue-color 50%,
+            $primary-color 50%
+        ); // sets color of add button blue to left and red to right
+        border-radius: 25%;
+
+        // style for add button container
+        .add-btn {
+            width: 40px;
+            height: 100%;
+            background-color: $light-color;
+            border-radius: 25%;
+            @include flex-items;
+        }
+    }
+}

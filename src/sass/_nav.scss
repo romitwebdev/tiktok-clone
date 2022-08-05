@@ -1,0 +1,53 @@
+// style for navbar
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    @include flex-items(space-between, center);
+    padding: $base-padding $base-padding;
+    z-index: 1;
+    color: $light-color;
+    filter: drop-shadow(0px 0px rgb(212, 209, 209)); //adds shadow to the text
+
+    // style for nav icons
+    .icons {
+        font-size: $font-md * 1.7;
+    }
+
+    // style for text of the navbar
+    .nav-text-holder {
+        flex: 2; // takes more space than other icons in navbar
+        @include flex-items();
+        font-size: $font-md * 1.2;
+        font-weight: 500;
+
+        .nav-text {
+            position: relative;
+            color: $light-secondary-color;
+
+            &:last-child {
+                margin-left: $base-margin;
+            }
+            &.active {
+                color: $light-color;
+            }
+
+            &.active::after {
+                content: "";
+                position: absolute;
+                top: 60%;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                transform: scaleX(0.5);
+                border-bottom: 4px solid $light-secondary-color;
+                filter: drop-shadow(
+                    0px 0px rgb(131, 129, 129)
+                ); //adds shadow to the text
+            }
+        }
+
+        // sets border below the text
+    }
+}
