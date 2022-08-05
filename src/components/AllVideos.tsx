@@ -85,7 +85,7 @@ const AllVideos = ({
     const options = {
         root: null,
         rootMargin: "0px",
-        threshold: 1.0,
+        threshold: 0.5,
     };
     const isVisibile = useElementOnScreen(options, vidRef);
     const onVideoClick = () => {
