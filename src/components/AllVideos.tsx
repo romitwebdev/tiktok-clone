@@ -105,13 +105,12 @@ const AllVideos = ({
     useEffect(() => {
         if (isVisible) {
             if (!playing) {
+                vidRef.current!.muted = false;
                 vidRef.current!.play();
-                vidRef.current!.muted = !vidRef.current!.muted;
                 setPlaying(true);
             }
         } else {
             if (playing) {
-                vidRef.current!.muted = !vidRef.current!.muted;
                 vidRef.current!.pause();
                 setPlaying(false);
             }
@@ -130,6 +129,7 @@ const AllVideos = ({
                     onClick={onVideoClick}
                     webkit-playsinline="true"
                     playsInline
+                    autoPlay
                     muted
                 >
                     <p>Your browser cannot play the provided video file.</p>
