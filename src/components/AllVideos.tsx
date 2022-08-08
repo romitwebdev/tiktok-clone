@@ -73,10 +73,14 @@ const AllVideos = ({
 
             const currentTarget = targetRef.current;
 
-            if (currentTarget) observer.observe(currentTarget);
+            if (currentTarget) {
+                observer.observe(currentTarget);
+            }
 
             return () => {
-                if (currentTarget) observer.unobserve(currentTarget);
+                if (currentTarget) {
+                    observer.unobserve(currentTarget);
+                }
             };
         }, [targetRef, optionsMemo]);
         return visibility;
@@ -87,7 +91,7 @@ const AllVideos = ({
         rootMargin: "0px",
         threshold: 0.5,
     };
-    const isVisibile = useElementOnScreen(options, vidRef);
+    const isVisible = useElementOnScreen(options, vidRef);
     const onVideoClick = () => {
         if (playing) {
             vidRef.current!.pause();
@@ -97,8 +101,9 @@ const AllVideos = ({
             setPlaying(!playing);
         }
     };
+
     useEffect(() => {
-        if (isVisibile) {
+        if (isVisible) {
             if (!playing) {
                 vidRef.current!.play();
                 setPlaying(true);
@@ -109,22 +114,41 @@ const AllVideos = ({
                 setPlaying(false);
             }
         }
-    }, [isVisibile]);
+    }, [isVisible]);
 
     return (
         <div className="video-container">
             <div className="video-holder">
+                {/* <div
+                    dangerouslySetInnerHTML={{
+                        __html: `<video
+            className="video_player"
+            loop
+            preload="true"
+            src=${src}
+            ref=${vidRef}
+            onClick=${onVideoClick}
+            webkit-playsinline="true"
+            playsInline
+        >
+            <p>Your browser cannot play the provided video file.</p>
+        </video>`,
+                    }}
+                ></div> */}
+
                 <video
                     className="video_player"
                     loop
                     preload="true"
-                    ref={vidRef}
                     src={src}
+                    ref={vidRef}
                     onClick={onVideoClick}
-                    webkit-playsinline
+                    webkit-playsinline="true"
                     playsInline
-                ></video>
-
+                    muted
+                >
+                    <p>Your browser cannot play the provided video file.</p>
+                </video>
                 <div className="description-holder">
                     <div className="description-container">
                         <div className="title">
