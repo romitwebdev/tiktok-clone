@@ -106,10 +106,12 @@ const AllVideos = ({
         if (isVisible) {
             if (!playing) {
                 vidRef.current!.play();
+                vidRef.current!.muted = !vidRef.current!.muted;
                 setPlaying(true);
             }
         } else {
             if (playing) {
+                vidRef.current!.muted = !vidRef.current!.muted;
                 vidRef.current!.pause();
                 setPlaying(false);
             }
@@ -119,23 +121,6 @@ const AllVideos = ({
     return (
         <div className="video-container">
             <div className="video-holder">
-                {/* <div
-                    dangerouslySetInnerHTML={{
-                        __html: `<video
-            className="video_player"
-            loop
-            preload="true"
-            src=${src}
-            ref=${vidRef}
-            onClick=${onVideoClick}
-            webkit-playsinline="true"
-            playsInline
-        >
-            <p>Your browser cannot play the provided video file.</p>
-        </video>`,
-                    }}
-                ></div> */}
-
                 <video
                     className="video_player"
                     loop
